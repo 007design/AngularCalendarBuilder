@@ -1,0 +1,94 @@
+<div class="container" id="appArea" ng-controller="MainCtrl">
+
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">
+	<link rel="stylesheet" type="text/css" href="/ustore/images/botanicgarden/js/custom_calendar/styles.css">
+	<link rel="stylesheet" href="/ustore/images/botanicgarden/js/custom_postcards/angular-ui.min.css">
+	<link rel="stylesheet" href="/ustore/images/botanicgarden/js/custom_postcards/jquery.qtip.css">
+	
+	<script type="text/javascript" src="/ustore/images/botanicgarden/js/custom_postcards/angular-ui.min.js"></script>
+	<script type="text/javascript" src="/ustore/images/botanicgarden/js/custom_postcards/jquery.qtip.min.js"></script>
+	
+	<div class="row-fluid" style="width:960px;">
+		<div class="row-fluid" style="width:800px;">
+			<div class="span1">
+				<b>Step 1</b>
+			</div>
+			<div class="span11">
+				<b>Browse through the available photos by selecting a season from the drop-down menu.</b>
+			</div>
+		</div>
+		
+		<div class="row-fluid" style="background-color:#eee; width:800px;">
+			<div class="span1">
+				<b>Step 2</b>
+			</div>
+			<div class="span11">
+				<b>Choose your photos by clicking on a month in your Current Order (to the right)<br/>and then clicking on a photo for that month.</b>
+			</div>
+		</div>
+		
+		<div class="row-fluid" style="width:800px;">
+			<div class="span1">
+				<b>Step 3</b>
+			</div>
+			<div class="span11">
+				<b>When you have finished choosing photos, click on the Submit button at the bottom of the page.</b>
+			</div>
+		</div>
+		
+		<div class="row-fluid" style="background-color:#eee; width:800px;">
+			<div class="span1">
+				<b>Step 4</b>
+			</div>
+			<div class="span11">
+				<b>After viewing your proof, click the Back button at the bottom of the Proof page<br/>if you would like to change an image.</b>
+			</div>
+		</div>
+	</div>
+	<div class="row-fluid" style="width:960px;">
+	
+		<!-- Image List -->
+		<div id="imagesArea" class="span8">	
+			<!-- Filters Area -->		
+			<div id="filtersArea" class="row-fluid">
+				<span class="heading pull-right">Image Library</span>
+				<select id="filterInput" class="input-medium" ng-model="selectedFilter">
+					<option value="spring">Spring</option>
+					<option value="summer">Summer</option>
+					<option value="fall">Fall</option>
+					<option value="winter">Winter</option>
+					<option value="Model Railroad">Model Railroad</option>
+					<option value="Wonderland Express">Wonderland Express</option>
+				</select>		
+			</div>					
+			<div id="imagesList" class="row-fluid">				
+				<div class="pull-left image-thumb-frame" ng-repeat="image in images | imgfilter:selectedFilter" title="{{image.title}}">
+					<span style="cursor:pointer" alt="http://webapps.lakecountypress.com/cbgcalendar/resource?uid={{image.id}}&size=preview" class="thumbnail" 
+					ng-click="selectImage(image,$event)" 
+					ui-jq="qtip" 
+					ui-options="{position:{my:'top center',at:'bottom center'},style:{classes:'ui-tooltip-shadow ui-tooltip-jtools'}}" title="{{image.caption}}">
+					<img class="preview-thumb" ng-src="http://webapps.lakecountypress.com/cbgcalendar/resource?uid={{image.id}}&size=thumb"/></span>
+				</div>
+			</div>				
+		</div>
+		<!-- End Image List -->
+						
+		<!-- Current Order -->
+		<div id="orderArea" class="span3 pull-right">
+			<h4>Current Order</h4>
+			<div class="row-fluid order-row" ng-click="selectMonth(m)" ng-repeat="m in months">
+				<div class="span6 order-details">
+					<img ng-src="http://webapps.lakecountypress.com/cbgcalendar/resource?uid={{adors[m.ador]}}&size=thumb" ng-hide="!m.img"/>
+				</div>
+				<div class="span6 order-qty">
+					<div class="item-row" ng-class="{active: selectedMonth==m}">{{m.text}}</div>					
+				</div>
+			</div>
+			<div id="submitOrderArea" class="row-fluid">
+				<input id="submitOrderButton" type="button" class="btn" ng-disabled="isSubmitDisabled()" ng-click="submitOrder()" value="Submit"/>
+			</div>
+		</div>
+		<!-- End Current Order -->
+	
+	</div>
+</div>

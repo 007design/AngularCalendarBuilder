@@ -1,0 +1,96 @@
+/** Image List **/
+#imagesList {
+  padding:20px 20px 50px 20px;
+}
+#imagesList .image-thumb-frame {
+	padding:3px;
+	background:#fff url('img/stripe.png') repeat left top;
+}
+
+/** Image Picker **/
+#appArea #imagesArea {
+	width:514px;
+	background-color:#f4f4f4;
+	border:1px solid #e5e5e5;
+}
+#imagesArea #filtersArea {
+	margin-bottom:30px;
+	background-color:#464646;
+	padding:20px;
+	width:473px;
+}
+#imagesArea #filtersArea .heading {
+	font:normal bold 14px/18px Georgia,serif;
+	padding:6px 0 0 0;
+	text-transform:uppercase;
+	color:#7e7e7e;
+	letter-spacing:0.1em;
+}
+#imagesArea #filtersArea #seasonFilterInput {}
+#imagesArea #filtersArea #orientationFilterInput {}
+#imagesArea #filtersArea #imagesList {}
+#imagesArea #filtersArea #imagesList .image-thumb-frame {}
+
+/** Order Area **/
+#appArea #orderArea {
+	width:250px;
+	background-color:#f4f4f4;
+	border:1px solid #e5e5e5;
+}
+#orderArea h4 {
+	background-color:#464646;
+	padding:29px 20px;
+	margin-bottom:20px;
+	font:normal normal 20px/18px Georgia,serif;
+	color:#fff;
+}
+#orderArea .row-fluid {
+	margin:0 20px;
+}
+#orderArea .order-row {
+	float:left;
+	width:188px;
+	background:#fff url('img/stripe.png') repeat left top;
+	padding:10px;
+	margin:10px 20px 0 20px;
+	border-bottom:1px dashed #e2e2e2;
+}
+#orderArea #orderTotal {
+	clear:left;
+	float:left;
+	color:red;
+	margin-bottom:10px;
+	font-size:12px;
+	padding:10px;
+	width:188px;
+	font-weight:bold;
+	background:#fff url('img/stripe.png') repeat left top;
+	border-bottom:1px dashed #e2e2e2;
+}
+#orderArea #submitOrderArea {
+	width:188px;
+	margin-bottom:40px;
+	padding:10px;
+	background:#fff url('img/stripe.png') repeat left top;
+}
+#submitOrderButton { background-color:#99cc00; }
+#orderArea #submitOrderArea input {
+	float:left;
+}
+#orderArea #submitOrderArea #qtyErrorMessage:before {
+	content:'';
+	clear:both;
+}
+#orderArea #submitOrderArea #qtyErrorMessage {
+	float:left;
+	margin-top:10px;
+	font-size:10px;
+	color:#8f8f8f;
+	font-style:italic;
+}
+
+.active {
+	font-weight:bold;
+	font-size:16px;
+	color:#0088cc;
+}

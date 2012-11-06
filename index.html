@@ -1,0 +1,47 @@
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+<script type="text/javascript" src="http://webapps.lakecountypress.com/lib/json2.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular-resource.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular-cookies.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="services.js"></script>
+<script type="text/javascript" src="directives.js"></script>
+<script type="text/javascript" src="controllers.js"></script>
+
+</head>
+<body>
+<div class="mainarea" style="display: block; ">
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $.ajax({
+		url: 'template.html',
+		dataType: 'html',
+		success: function(response){
+			/** Add the html to the DOM **/
+			$('.mainarea').after(response);				
+			
+			/** Create the app module **/
+			angular.module('app',['services', 'directives']);
+			
+			/**
+			 * Bootstrap the document, inject the app module
+			 */
+			angular.element(document).ready(function() {
+				angular.bootstrap(document, ['app']);
+			});
+		}
+	});
+});
+</script>
+
+</body>
+</html>
